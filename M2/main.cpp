@@ -1,23 +1,42 @@
 #include <iostream>
 
 using namespace std;
-int main()
-{
-    int num1, num2;
-    float numFloat1, numFloat2;
+int main() {
+    char operators;
+    double num1, num2;
+    double result;
 
-    cout << "Input Num 1: ";
+    cout << "Masukkan operator (+, -, *, /): ";
+    cin >> operators;
+
+    cout << "Masukkan dua angka: ";
     cin >> num1;
-    cout << "Input Num 2: ";
     cin >> num2;
 
-    printf("Hasil %d + %d adalah %d \n", num1, num2, num1 + num2);
-    printf("Hasil %d - %d adalah %d \n", num1, num2, num1 - num2);
-    printf("Hasil %d * %d adalah %d \n", num1, num2, num1 * num2);
+    switch (operators) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2 == 0) {
+                cerr << "Num2 cannot be 0";
+                return 0;
+            }
 
-    numFloat1 = num1;
-    numFloat2 = num2;
-    printf("Hasil %d / %d adalah %f \n", num1, num2, numFloat1 / numFloat2);
+            result = num1 / num2;
+            break;
+        default:
+            cout  << "Operator not found";
+            return 0;
+    }
+
+    cout << "Hasil perhitugan: " << num1 << " " << operators << " " << num2 << " = " << result;
 
     return 0;
 }
